@@ -1,0 +1,38 @@
+{
+  "name": "sabri-dental-frontend",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "electron:dev": "concurrently -k \"vite\" \"wait-on http://localhost:5173 && electron .\"",
+    "electron:build": "vite build && electron-builder"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.58.0",
+    "axios": "^1.7.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "concurrently": "^9.0.1",
+    "electron": "^32.1.2",
+    "electron-builder": "^25.0.5",
+    "vite": "^5.4.6",
+    "wait-on": "^8.0.0"
+  },
+  "build": {
+    "appId": "com.sabridentalclinic.app",
+    "productName": "Sabri's Dental Clinic",
+    "files": ["dist/**/*", "electron/**/*"],
+    "directories": { "buildResources": "build" },
+    "win": { "target": "nsis" },
+    "mac": { "target": "dmg" },
+    "linux": { "target": "AppImage" }
+  }
+}
